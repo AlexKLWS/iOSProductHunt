@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PRODUCT_HUNT_API_REDIRECT_URI</key>
+	<string>https://mysite.com</string>
+	<key>PRODUCT_HUNT_API_SECRET</key>
+	<string>b2fb0c8635f6cc51c000935d8deb52764876e3dd9664c2477fb75f42cd20fd09</string>
+	<key>PRODUCT_HUNT_API_KEY</key>
+	<string>0902664802b4fb2fd1963abb60739024c2e9c85467692f62f8dd2cabb579995c</string>
+</dict>
+</plist>
