@@ -120,6 +120,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		B889E7972205D69600E9E023 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				B8A0E7592204DDD700F3A637 /* RootViewController.storyboard */,
+				B8A0E75E2204DDD800F3A637 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
 		B8A0E7492204DDD600F3A637 = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +154,7 @@
 		B8A0E7542204DDD700F3A637 /* producthuntclient */ = {
 			isa = PBXGroup;
 			children = (
+				B889E7972205D69600E9E023 /* Storyboards */,
 				B8A0E7962205C45100F3A637 /* ViewModels */,
 				B8A0E7932205BEB500F3A637 /* Network */,
 				B8A0E7902205088D00F3A637 /* Views */,
@@ -152,9 +162,7 @@
 				B8A0E78D220500CD00F3A637 /* Models */,
 				B8A0E78A2204EE3500F3A637 /* Utils */,
 				B8A0E7842204E40900F3A637 /* Resources */,
-				B8A0E7592204DDD700F3A637 /* RootViewController.storyboard */,
 				B8A0E75C2204DDD800F3A637 /* Assets.xcassets */,
-				B8A0E75E2204DDD800F3A637 /* LaunchScreen.storyboard */,
 				B8A0E7612204DDD800F3A637 /* Info.plist */,
 			);
 			path = producthuntclient;
