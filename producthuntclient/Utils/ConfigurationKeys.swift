@@ -9,7 +9,9 @@
 import Foundation
 
 struct ConfigurationKeys {
+    
     static let productHuntAPIKey = "PRODUCT_HUNT_API_KEY"
     static let productHuntAPISecret = "PRODUCT_HUNT_API_SECRET"
     static let productHuntAPIRedirectURI = "PRODUCT_HUNT_API_REDIRECT_URI"
+    
 }

@@ -12,10 +12,15 @@ class ConfigurationProvider {
     
     fileprivate static var configuration: NSDictionary?
     
-    class func getConfigurationValue<T>(for key: String) -> T? {
-        if configuration == nil, let path = Bundle.main.path(forResource: "Config", ofType: "plist") {
+    fileprivate class func loadConfigurationIfNeeded() {
+        guard configuration == nil else { return }
+        if let path = Bundle.main.path(forResource: "Config", ofType: "plist", inDirectory: "Config") {
             configuration = NSDictionary(contentsOfFile: path)
         }
+    }
+    
+    class func getConfigurationValue<T>(for key: String) -> T? {
+        loadConfigurationIfNeeded()
         guard let configuration = configuration else { return nil }
         
         return configuration.value(forKey: key) as? T
