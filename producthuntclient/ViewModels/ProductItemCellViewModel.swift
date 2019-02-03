@@ -10,4 +10,9 @@ import Foundation
 
 class ProductItemCellViewModel {
     
+    fileprivate var productItemData: ProductItemData!
+    
+    init (data: ProductItemData) {
+        productItemData = data
+    }
 }
