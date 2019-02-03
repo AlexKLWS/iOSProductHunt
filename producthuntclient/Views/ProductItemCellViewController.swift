@@ -10,5 +10,7 @@ import Foundation
 import UIKit
 
 class ProductItemCellViewController: UITableViewCell {
+    
     var viewModel: ProductItemCellViewModel?
+    
 }
