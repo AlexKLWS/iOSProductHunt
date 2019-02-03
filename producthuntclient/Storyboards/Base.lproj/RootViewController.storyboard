@@ -12,7 +12,7 @@
         <!--Root View Controller-->
         <scene sceneID="F2m-X1-IG9">
             <objects>
-                <tableViewController id="L0u-yA-qsM" sceneMemberID="viewController">
+                <tableViewController id="L0u-yA-qsM" customClass="ProductListViewController" customModule="producthuntclient" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Pcq-qT-LUl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
