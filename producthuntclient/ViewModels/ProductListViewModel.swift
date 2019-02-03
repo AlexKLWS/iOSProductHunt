@@ -10,7 +10,7 @@ import Foundation
 
 class ProductListViewModel {
     
-    fileprivate var reloadTableView: (()->())?
+    fileprivate var reloadTableView: (() -> Void)?
     
     fileprivate var cellViewModels: [ProductItemCellViewModel] = [ProductItemCellViewModel]() {
         didSet {
@@ -24,5 +24,25 @@ class ProductListViewModel {
     
     func getCellViewModel( at indexPath: IndexPath ) -> ProductItemCellViewModel {
         return cellViewModels[indexPath.row]
+    }
+    
+    func loadData() {
+        ActivityIndicatorView.showIndicator()
+        NetworkLayer.fetchPosts { [weak self] posts, error in
+            guard let this = self else { return }
+            
+            guard error == nil else {
+                //TODO: Handle error
+                return
+            }
+            
+            var productItemCells: [ProductItemCellViewModel] = []
+            for post in posts {
+                let productItemCell = ProductItemCellViewModel(data: post)
+                productItemCells.append(productItemCell)
+            }
+            this.cellViewModels = productItemCells
+            ActivityIndicatorView.hideIndicator()
+        }
     }
 }
