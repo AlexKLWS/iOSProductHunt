@@ -12,6 +12,14 @@ class ProductItemCellViewModel {
     
     fileprivate var productItemData: ProductItemData!
     
+    var name: String {
+        return productItemData.name
+    }
+    
+    var tagline: String {
+        return productItemData.tagline
+    }
+    
     init (data: ProductItemData) {
         productItemData = data
     }

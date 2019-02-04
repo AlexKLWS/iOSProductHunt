@@ -11,6 +11,15 @@ import UIKit
 
 class ProductItemCellViewController: UITableViewCell {
     
-    var viewModel: ProductItemCellViewModel?
+    @IBOutlet weak var productItemThumbnail: UIImageView!
+    @IBOutlet weak var productItemTitle: UILabel!
+    @IBOutlet weak var productItemSubtitle: UILabel!
+    
+    var viewModel: ProductItemCellViewModel? {
+        didSet {
+            productItemTitle.text = viewModel?.name
+            productItemSubtitle.text = viewModel?.tagline
+        }
+    }
     
 }
