@@ -10,7 +10,8 @@ import Foundation
 
 class ProductListViewModel {
     
-    fileprivate var reloadTableView: (() -> Void)?
+    var reloadTableView: (() -> Void)?
+    var onErrorOccured: (() -> Void)?
     
     fileprivate var cellViewModels: [ProductItemCellViewModel] = [ProductItemCellViewModel]() {
         didSet {
@@ -32,7 +33,8 @@ class ProductListViewModel {
             guard let this = self else { return }
             
             guard error == nil else {
-                //TODO: Handle error
+                ActivityIndicatorView.hideIndicator()
+                this.onErrorOccured?()
                 return
             }
             
