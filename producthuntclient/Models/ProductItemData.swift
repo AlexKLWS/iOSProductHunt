@@ -82,8 +82,8 @@ struct Topic: Codable {
 
 struct User: Codable {
     let id: Int
-    let createdAt, name, username, headline: String
-    let twitterUsername, websiteURL: String?
+    let createdAt, name, username: String
+    let twitterUsername, websiteURL, headline: String?
     let profileURL: String
     let imageURL: ImageURL
     
