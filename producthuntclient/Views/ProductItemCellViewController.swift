@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyGif
 import UIKit
 
 class ProductItemCellViewController: UITableViewCell {
@@ -19,7 +20,16 @@ class ProductItemCellViewController: UITableViewCell {
         didSet {
             productItemTitle.text = viewModel?.name
             productItemSubtitle.text = viewModel?.tagline
+            viewModel?.getImage { [weak self] image in
+                self?.productItemThumbnail.stopAnimatingGif()
+                SwiftyGifManager.defaultManager.deleteImageView(self!.productItemThumbnail)
+                self?.productItemThumbnail.clear()
+                if image.imageCount != nil {
+                    self?.productItemThumbnail.setGifImage(image)
+                } else {
+                    self?.productItemThumbnail.image = image
+                }
+            }
         }
     }
-    
 }
