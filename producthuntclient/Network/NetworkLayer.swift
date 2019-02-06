@@ -33,7 +33,7 @@ class NetworkLayer {
                            callback([], NSError(domain:"", code:400, userInfo:nil))
                             return
                     }
-                    
+
                     let decoder = JSONDecoder()
                     do {
                         let parsedValue = try decoder.decode(ProductItemsResponseData.self, from: value)
@@ -97,6 +97,19 @@ class NetworkLayer {
                 } catch {
                     callback("", error)
                 }
+        }
+    }
+    
+    class func donwloadImageData(from url: URL, callback: @escaping ((Data, Error?) -> Void)) {
+        AF.download(url).responseData { response in
+            guard response.error == nil
+                else {
+                    callback(Data(), response.error)
+                    return
+            }
+            if let data = response.result.value {
+                callback(data, nil)
+            }
         }
     }
 }
