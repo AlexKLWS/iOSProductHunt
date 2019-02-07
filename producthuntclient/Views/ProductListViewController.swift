@@ -18,6 +18,8 @@ class ProductListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.title = "Product Hunt"
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         initializeViewModel()
     }
     
@@ -38,6 +40,10 @@ class ProductListViewController: UITableViewController {
         viewModel.loadData()
     }
     
+    func pushViewController(controller: UIViewController) {
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
     // MARK: - UITableViewDataSource
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -53,5 +59,9 @@ class ProductListViewController: UITableViewController {
         cell.viewModel = cellViewModel
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.onItemSelected(at: indexPath)
     }
 }

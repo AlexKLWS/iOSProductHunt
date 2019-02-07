@@ -23,7 +23,7 @@ class ProductListViewModel {
         return cellViewModels.count
     }
     
-    func getCellViewModel( at indexPath: IndexPath ) -> ProductItemCellViewModel {
+    func getCellViewModel(at indexPath: IndexPath) -> ProductItemCellViewModel {
         return cellViewModels[indexPath.row]
     }
     
@@ -45,6 +45,11 @@ class ProductListViewModel {
             }
             this.cellViewModels = productItemCells
             ActivityIndicatorView.hideIndicator()
+        }
+    }
+    
+    func onItemSelected(at indexPath: IndexPath) {
+        if let detailController = ProductItemDetailViewController.storyboardInstance() {
         }
     }
 }
