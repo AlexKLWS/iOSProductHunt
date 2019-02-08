@@ -6,8 +6,6 @@
 //  Copyright © 2019 Alex Korzh. All rights reserved.
 //
 
-import Foundation
-
 class JSONCodingKey: CodingKey {
     let key: String
     

@@ -6,8 +6,6 @@
 //  Copyright © 2019 Alex Korzh. All rights reserved.
 //
 
-import Foundation
-
 class JSONAny: Codable {
     let value: Any
     
