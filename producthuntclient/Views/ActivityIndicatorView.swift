@@ -66,5 +66,4 @@ class ActivityIndicatorView {
         screenOverlay?.removeFromSuperview()
         screenOverlay = nil
     }
-    
 }

@@ -11,6 +11,10 @@ import UIKit
 
 class ProductItemDetailViewController: UIViewController {
     
+    fileprivate lazy var viewModel: ProductItemDetailsViewModel = {
+        return ProductItemDetailsViewModel()
+    }()
+    
     static func storyboardInstance() -> ProductItemDetailViewController? {
         let storyboard = UIStoryboard(name: String(describing: self), bundle: nil)
         return storyboard.instantiateInitialViewController() as? ProductItemDetailViewController
@@ -19,9 +23,10 @@ class ProductItemDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.title = viewModel.title
     }
     
-    func initViewModel(cellViewModel: ProductItemCellViewModel) {
-        
+    func initializeViewModel(cellViewData: ProductItemCellViewModel) {
+        viewModel.setup(data: cellViewData)
     }
 }

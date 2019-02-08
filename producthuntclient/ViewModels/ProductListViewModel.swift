@@ -12,10 +12,20 @@ class ProductListViewModel {
     
     var reloadTableView: (() -> Void)?
     var onErrorOccured: (() -> Void)?
+    var pushDetailController: ((ProductItemDetailViewController) -> Void)?
     
     fileprivate var cellViewModels: [ProductItemCellViewModel] = [ProductItemCellViewModel]() {
         didSet {
             self.reloadTableView?()
+        }
+    }
+    
+    var selectedItemIndex: IndexPath? {
+        didSet {
+            guard let detailController = ProductItemDetailViewController.storyboardInstance(),
+                let index = selectedItemIndex else { return }
+            detailController.initializeViewModel(cellViewData: getCellViewModel(at: index))
+            pushDetailController?(detailController)
         }
     }
     
@@ -45,11 +55,6 @@ class ProductListViewModel {
             }
             this.cellViewModels = productItemCells
             ActivityIndicatorView.hideIndicator()
-        }
-    }
-    
-    func onItemSelected(at indexPath: IndexPath) {
-        if let detailController = ProductItemDetailViewController.storyboardInstance() {
         }
     }
 }

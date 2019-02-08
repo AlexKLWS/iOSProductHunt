@@ -37,8 +37,14 @@ class ProductListViewController: UITableViewController {
             self?.present(loadDataErrorAlert, animated: true, completion: nil)
         }
         
+        viewModel.pushDetailController = { [weak self] controller in
+            self?.pushViewController(controller: controller)
+        }
+        
         viewModel.loadData()
     }
+    
+    // MARK: - UINavigationController
     
     func pushViewController(controller: UIViewController) {
         navigationController?.pushViewController(controller, animated: true)
@@ -61,7 +67,9 @@ class ProductListViewController: UITableViewController {
         return cell
     }
     
+    // MARK: - UITableViewDelegate
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.onItemSelected(at: indexPath)
+        viewModel.selectedItemIndex = indexPath
     }
 }

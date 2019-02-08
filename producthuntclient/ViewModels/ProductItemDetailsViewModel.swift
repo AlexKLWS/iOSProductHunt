@@ -10,7 +10,9 @@ import Foundation
 
 class ProductItemDetailsViewModel{
     
-    init (data: ProductItemData) {
-        
+    var title = ""
+    
+    func setup(data: ProductItemCellViewModel) {
+        title = data.name
     }
 }
