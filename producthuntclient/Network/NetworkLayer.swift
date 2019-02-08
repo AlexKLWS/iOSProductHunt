@@ -112,4 +112,44 @@ class NetworkLayer {
             }
         }
     }
+    
+    class func fetchDetailsForPost(withId postId: Int, callback: @escaping ((ProductItemDetailsData?, Error?) -> Void)) {
+        let fetch: (String, Error?) -> Void = { token, error in
+            let headers: HTTPHeaders = [
+                "Authorization": token,
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                ]
+            
+            AF.request("https://api.producthunt.com/v1/posts/" + String(postId),
+                       method: .get,
+                       headers: headers)
+                .responseData { response in
+                    guard response.error == nil
+                        else {
+                            callback(nil, response.error)
+                            return
+                    }
+                    guard let value = response.result.value
+                        else {
+                            callback(nil, NSError(domain:"", code:400, userInfo:nil))
+                            return
+                    }
+                    
+                    let decoder = JSONDecoder()
+                    do {
+                        let parsedValue = try decoder.decode(ProductItemDetailsResponseData.self, from: value)
+                        callback(parsedValue.post, nil)
+                    } catch {
+                        callback(nil, error)
+                    }
+            }
+        }
+        
+        if let token = Session.clientToken {
+            fetch(token, nil)
+        } else {
+            authenticate(callback: fetch)
+        }
+    }
 }
