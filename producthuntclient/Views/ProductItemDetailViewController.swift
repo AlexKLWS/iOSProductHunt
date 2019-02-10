@@ -11,6 +11,9 @@ import UIKit
 
 class ProductItemDetailViewController: UIViewController {
     
+    @IBOutlet weak var screenShotView: UIImageView!
+    @IBOutlet weak var productTagline: UILabel!
+    
     fileprivate lazy var viewModel: ProductItemDetailsViewModel = {
         return ProductItemDetailsViewModel()
     }()
@@ -20,13 +23,15 @@ class ProductItemDetailViewController: UIViewController {
         return storyboard.instantiateInitialViewController() as? ProductItemDetailViewController
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        navigationItem.title = viewModel.title
-    }
-    
     func initializeViewModel(cellViewData: ProductItemCellViewModel) {
+        viewModel.onDataLoaded = { [weak self] in
+            guard let this = self else { return }
+            this.navigationItem.title = this.viewModel.title
+            this.productTagline.text = this.viewModel.tagline
+            this.viewModel.getImage { image in
+                this.screenShotView.image = image
+            }
+        }
         viewModel.setup(data: cellViewData)
     }
 }

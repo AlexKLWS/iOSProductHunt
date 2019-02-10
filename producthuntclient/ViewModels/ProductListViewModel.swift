@@ -16,7 +16,7 @@ class ProductListViewModel {
     
     fileprivate var cellViewModels: [ProductItemCellViewModel] = [ProductItemCellViewModel]() {
         didSet {
-            self.reloadTableView?()
+            reloadTableView?()
         }
     }
     
@@ -39,7 +39,9 @@ class ProductListViewModel {
     
     func loadData() {
         ActivityIndicatorView.showIndicator()
-        NetworkLayer.fetchPosts { [weak self] posts, error in
+        guard let networkLayer: NetworkLayerServiceProtocol = ServiceProvider.shared.getService() else { return }
+        
+        networkLayer.fetchPosts { [weak self] posts, error in
             guard let this = self else { return }
             
             guard error == nil else {

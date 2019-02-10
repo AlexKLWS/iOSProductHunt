@@ -10,12 +10,12 @@ import Foundation
 
 class Session {
     
-    fileprivate static var clientTokenData: TokenData?
+    fileprivate var clientTokenData: TokenData?
     
     //Client-level token doesn't expire so logic here is pretty simple
-    static var clientToken = UserDefaults.standard.string(forKey: "client_token")
+    var clientToken = UserDefaults.standard.string(forKey: "client_token")
     
-    class func setClientToken(_ token: TokenData) {
+    func setClientToken(_ token: TokenData) {
         clientTokenData = token
         clientToken = token.tokenType + " " + token.accessToken
         UserDefaults.standard.set(clientToken, forKey: "client_token")

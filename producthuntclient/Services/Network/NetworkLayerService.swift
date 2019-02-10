@@ -1,5 +1,5 @@
 //
-//  NetworkLayer.swift
+//  NetworkLayerService.swift
 //  producthuntclient
 //
 //  Created by Alex Korzh on 2/2/19.
@@ -9,9 +9,11 @@
 import Foundation
 import Alamofire
 
-class NetworkLayer {
+class NetworkLayerService: NetworkLayerServiceProtocol {
     
-    class func fetchPosts(callback: @escaping (([ProductItemData], Error?) -> Void)) {
+    fileprivate let session: Session = Session()
+    
+    func fetchPosts(callback: @escaping (([ProductItemData], Error?) -> Void)) {
         let fetch: (String, Error?) -> Void = { token, error in
             let headers: HTTPHeaders = [
                 "Authorization": token,
@@ -44,14 +46,14 @@ class NetworkLayer {
             }
         }
         
-        if let token = Session.clientToken {
+        if let token = session.clientToken {
             fetch(token, nil)
         } else {
             authenticate(callback: fetch)
         }
     }
     
-    class func authenticate(callback: @escaping ((String, Error?) -> Void)) {
+    internal func authenticate(callback: @escaping ((String, Error?) -> Void)) {
         guard let apiKey: String =
             ConfigurationProvider.getConfigurationValue(for: ConfigurationKeys.productHuntAPIKey),
             let secret: String =
@@ -75,7 +77,7 @@ class NetworkLayer {
                    parameters: parameters,
                    encoding: JSONEncoding.default,
                    headers: headers)
-            .responseData { response in
+            .responseData { [weak self] response in
                 guard response.error == nil
                     else {
                         callback("", response.error)
@@ -90,8 +92,8 @@ class NetworkLayer {
                 let decoder = JSONDecoder()
                 do {
                     let parsedValue = try decoder.decode(TokenData.self, from: value)
-                    Session.setClientToken(parsedValue)
-                    if let token = Session.clientToken {
+                    self?.session.setClientToken(parsedValue)
+                    if let token = self?.session.clientToken {
                         callback(token, nil)
                     }
                 } catch {
@@ -100,7 +102,7 @@ class NetworkLayer {
         }
     }
     
-    class func donwloadImageData(from url: URL, callback: @escaping ((Data, Error?) -> Void)) {
+    func donwloadImageData(from url: URL, callback: @escaping ((Data, Error?) -> Void)) {
         AF.download(url).responseData { response in
             guard response.error == nil
                 else {
@@ -113,7 +115,7 @@ class NetworkLayer {
         }
     }
     
-    class func fetchDetailsForPost(withId postId: Int, callback: @escaping ((ProductItemDetailsData?, Error?) -> Void)) {
+    func fetchDetailsForPost(withId postId: Int, callback: @escaping ((ProductItemDetailsData?, Error?) -> Void)) {
         let fetch: (String, Error?) -> Void = { token, error in
             let headers: HTTPHeaders = [
                 "Authorization": token,
@@ -146,7 +148,7 @@ class NetworkLayer {
             }
         }
         
-        if let token = Session.clientToken {
+        if let token = session.clientToken {
             fetch(token, nil)
         } else {
             authenticate(callback: fetch)
