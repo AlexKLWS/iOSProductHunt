@@ -17,7 +17,7 @@ struct ProductItemData: Codable {
     let day: String
     let id: Int
     let name, productState, tagline: String
-    let iosFeaturedAt, categoryID: JSONNull?
+    let categoryID: JSONNull?
     let createdAt: String
     let discussionURL: String
     let exclusive: JSONNull?
@@ -34,7 +34,6 @@ struct ProductItemData: Codable {
         case day, id, name
         case productState = "product_state"
         case tagline
-        case iosFeaturedAt = "ios_featured_at"
         case categoryID = "category_id"
         case createdAt = "created_at"
         case discussionURL = "discussion_url"
