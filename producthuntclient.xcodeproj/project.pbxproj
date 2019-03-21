@@ -48,6 +48,8 @@
 		B8CD0E4C2210DF8100CC5957 /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD0E4B2210DF8100CC5957 /* CacheService.swift */; };
 		B8CD0E502210E41E00CC5957 /* CacheServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD0E4F2210E41E00CC5957 /* CacheServiceProtocol.swift */; };
 		B8CD0E522210E58200CC5957 /* DataWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD0E512210E58200CC5957 /* DataWrapper.swift */; };
+		CD38FC702243E0970053BD56 /* ProductListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD38FC6F2243E0970053BD56 /* ProductListViewModelTests.swift */; };
+		CD38FC722243E30F0053BD56 /* MockNetworkLayerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD38FC712243E30F0053BD56 /* MockNetworkLayerService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +123,8 @@
 		BD853D82938AB3291487134A /* Pods_producthuntclient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_producthuntclient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF9B1C0766C58282296E92E2 /* Pods-producthuntclientTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-producthuntclientTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-producthuntclientTests/Pods-producthuntclientTests.release.xcconfig"; sourceTree = "<group>"; };
 		C117B29301682A120B59D782 /* Pods-producthuntclient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-producthuntclient.debug.xcconfig"; path = "Pods/Target Support Files/Pods-producthuntclient/Pods-producthuntclient.debug.xcconfig"; sourceTree = "<group>"; };
+		CD38FC6F2243E0970053BD56 /* ProductListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListViewModelTests.swift; sourceTree = "<group>"; };
+		CD38FC712243E30F0053BD56 /* MockNetworkLayerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkLayerService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,6 +222,8 @@
 			children = (
 				B8A0E76A2204DDD800F3A637 /* producthuntclientTests.swift */,
 				B8A0E76C2204DDD800F3A637 /* Info.plist */,
+				CD38FC6F2243E0970053BD56 /* ProductListViewModelTests.swift */,
+				CD38FC712243E30F0053BD56 /* MockNetworkLayerService.swift */,
 			);
 			path = producthuntclientTests;
 			sourceTree = "<group>";
@@ -614,6 +620,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD38FC702243E0970053BD56 /* ProductListViewModelTests.swift in Sources */,
+				CD38FC722243E30F0053BD56 /* MockNetworkLayerService.swift in Sources */,
 				B8A0E76B2204DDD800F3A637 /* producthuntclientTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
