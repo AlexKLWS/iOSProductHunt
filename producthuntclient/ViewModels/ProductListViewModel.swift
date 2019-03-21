@@ -13,10 +13,17 @@ class ProductListViewModel {
     var reloadTableView: (() -> Void)?
     var onErrorOccured: (() -> Void)?
     var pushDetailController: ((ProductItemDetailViewController) -> Void)?
+    var onLoadingStateChange: ((Bool) -> Void)?
     
     fileprivate var cellViewModels: [ProductItemCellViewModel] = [ProductItemCellViewModel]() {
         didSet {
             reloadTableView?()
+        }
+    }
+    
+    fileprivate var isLoading = false {
+        didSet {
+            onLoadingStateChange?(isLoading)
         }
     }
     
@@ -38,14 +45,14 @@ class ProductListViewModel {
     }
     
     func loadData() {
-        ActivityIndicatorView.showIndicator()
+        isLoading = true
         guard let networkLayer: NetworkLayerServiceProtocol = ServiceProvider.shared.getService() else { return }
         
         networkLayer.fetchPosts { [weak self] posts, error in
             guard let this = self else { return }
             
             guard error == nil else {
-                ActivityIndicatorView.hideIndicator()
+                this.isLoading = false
                 this.onErrorOccured?()
                 return
             }
@@ -56,7 +63,7 @@ class ProductListViewModel {
                 productItemCells.append(productItemCell)
             }
             this.cellViewModels = productItemCells
-            ActivityIndicatorView.hideIndicator()
+            this.isLoading = false
         }
     }
 }

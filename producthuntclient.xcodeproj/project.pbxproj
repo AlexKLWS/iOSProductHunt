@@ -29,7 +29,6 @@
 		B8A0E7872204E43F00F3A637 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = B8A0E7862204E43F00F3A637 /* Config.plist */; };
 		B8A0E7892204EC9E00F3A637 /* ConfigurationKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A0E7882204EC9E00F3A637 /* ConfigurationKeys.swift */; };
 		B8A0E78C2204EEA200F3A637 /* ConfigurationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A0E78B2204EEA200F3A637 /* ConfigurationProvider.swift */; };
-		B8A0E792220508A300F3A637 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A0E791220508A300F3A637 /* ActivityIndicatorView.swift */; };
 		B8A0E7952205BEC900F3A637 /* NetworkLayerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A0E7942205BEC900F3A637 /* NetworkLayerService.swift */; };
 		B8A0E7982205C62600F3A637 /* ProductListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A0E7972205C62600F3A637 /* ProductListViewModel.swift */; };
 		B8A0E79A2205CB8200F3A637 /* ProductListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A0E7992205CB8200F3A637 /* ProductListViewController.swift */; };
@@ -100,7 +99,6 @@
 		B8A0E7862204E43F00F3A637 /* Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 		B8A0E7882204EC9E00F3A637 /* ConfigurationKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationKeys.swift; sourceTree = "<group>"; };
 		B8A0E78B2204EEA200F3A637 /* ConfigurationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationProvider.swift; sourceTree = "<group>"; };
-		B8A0E791220508A300F3A637 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
 		B8A0E7942205BEC900F3A637 /* NetworkLayerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLayerService.swift; sourceTree = "<group>"; };
 		B8A0E7972205C62600F3A637 /* ProductListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListViewModel.swift; sourceTree = "<group>"; };
 		B8A0E7992205CB8200F3A637 /* ProductListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListViewController.swift; sourceTree = "<group>"; };
@@ -291,7 +289,6 @@
 			isa = PBXGroup;
 			children = (
 				B8A0E7572204DDD700F3A637 /* RootViewController.swift */,
-				B8A0E791220508A300F3A637 /* ActivityIndicatorView.swift */,
 				B8A0E7992205CB8200F3A637 /* ProductListViewController.swift */,
 				B8A0E79D2205D23800F3A637 /* ProductItemCellViewController.swift */,
 				B835C967220B94A3007BD97C /* ProductItemDetailViewController.swift */,
@@ -556,7 +553,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-producthuntclient/Pods-producthuntclient-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-producthuntclient/Pods-producthuntclient-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyGif/SwiftyGif.framework",
 			);
@@ -569,7 +566,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-producthuntclient/Pods-producthuntclient-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-producthuntclient/Pods-producthuntclient-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -593,7 +590,6 @@
 				B835C974220CDA81007BD97C /* JSONAny.swift in Sources */,
 				B8CD0E502210E41E00CC5957 /* CacheServiceProtocol.swift in Sources */,
 				B8A0E79C2205CE3600F3A637 /* ProductItemCellViewModel.swift in Sources */,
-				B8A0E792220508A300F3A637 /* ActivityIndicatorView.swift in Sources */,
 				B8A0E7982205C62600F3A637 /* ProductListViewModel.swift in Sources */,
 				B8CD0E0C220CF31900CC5957 /* UserData.swift in Sources */,
 				B8A0E78C2204EEA200F3A637 /* ConfigurationProvider.swift in Sources */,
