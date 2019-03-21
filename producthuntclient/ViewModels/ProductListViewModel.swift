@@ -10,7 +10,7 @@ import Foundation
 
 class ProductListViewModel {
     
-    var networkLayerService: NetworkLayerServiceProtocol
+    var networkLayerService: NetworkLayerServiceProtocol?
     
     var reloadTableView: (() -> Void)?
     var onErrorOccured: (() -> Void)?
@@ -42,8 +42,12 @@ class ProductListViewModel {
         return cellViewModels.count
     }
     
-    init(networkLayer: NetworkLayerServiceProtocol = NetworkLayerService()) {
-        self.networkLayerService = networkLayer
+    init(networkLayerService: NetworkLayerServiceProtocol? = nil) {
+        if let networkLayer = networkLayerService {
+            self.networkLayerService = networkLayer
+        } else {
+            self.networkLayerService = ServiceProvider.shared.getService()
+        }
     }
     
     func getCellViewModel(at indexPath: IndexPath) -> ProductItemCellViewModel {
@@ -52,7 +56,7 @@ class ProductListViewModel {
     
     func loadData() {
         isLoading = true
-        guard let networkLayer: NetworkLayerServiceProtocol = ServiceProvider.shared.getService() else { return }
+        guard let networkLayer = networkLayerService else { return }
         
         networkLayer.fetchPosts { [weak self] posts, error in
             guard let this = self else { return }
