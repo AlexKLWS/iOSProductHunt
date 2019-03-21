@@ -10,6 +10,8 @@ import Foundation
 
 class ProductListViewModel {
     
+    var networkLayerService: NetworkLayerServiceProtocol
+    
     var reloadTableView: (() -> Void)?
     var onErrorOccured: (() -> Void)?
     var pushDetailController: ((ProductItemDetailViewController) -> Void)?
@@ -38,6 +40,10 @@ class ProductListViewModel {
     
     var cellCount: Int {
         return cellViewModels.count
+    }
+    
+    init(networkLayer: NetworkLayerServiceProtocol = NetworkLayerService()) {
+        self.networkLayerService = networkLayer
     }
     
     func getCellViewModel(at indexPath: IndexPath) -> ProductItemCellViewModel {
